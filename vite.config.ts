@@ -25,14 +25,8 @@ export default defineConfig({
             'Grid2',
             'Typography',
             'styled',
-            // alias
-            ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+            ['useFetch', 'useMyFetch'],
           ],
-          // '[package-name]': [
-          //   '[import-names]',
-          //   // alias
-          //   ['[from]', '[alias]'],
-          // ],
         },
       ],
     }),
