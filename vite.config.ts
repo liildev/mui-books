@@ -1,0 +1,49 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import AutoImport from 'unplugin-auto-import/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { fileURLToPath } from "url";
+
+export default defineConfig({
+  envPrefix: 'APP_',
+  build: {
+    chunkSizeWarningLimit: 1500,
+  },
+  plugins: [
+    react(),
+    AutoImport({
+      dts: './src/types/imports.d.ts', imports: [
+        "react",
+        "react-router-dom",
+        {
+          '@mui/material': [
+            'Box',
+            'Button',
+            'Card',
+            'CardContent',
+            'Container',
+            'Grid2',
+            'Typography',
+            'styled',
+            // alias
+            ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+          ],
+          // '[package-name]': [
+          //   '[import-names]',
+          //   // alias
+          //   ['[from]', '[alias]'],
+          // ],
+        },
+      ],
+    }),
+    ViteImageOptimizer()
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+  server: {
+    port: 5774,
+  }
+})

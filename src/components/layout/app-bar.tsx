@@ -1,0 +1,123 @@
+import {
+  AppBar as MuiAppBar,
+  Link as MuiLink,
+  IconButton,
+  Divider,
+  MenuItem,
+  Drawer
+} from '@mui/material';
+import { StyledToolbar } from './style';
+import { NavButtons } from './nav-buttons';
+import { ToggleMode } from './toggle-mode';
+import { AutoStories, CloseRounded, Menu } from '@mui/icons-material';
+import { ROUTES } from '@/constants';
+import { useAppStore } from '@/lib/store';
+
+export const AppBar = () => {
+  const { isDrawer, toggleDrawer } = useAppStore()
+
+  const links = [
+    {
+      label: 'Source code',
+      href: 'https://github.com/liildev/mui-books',
+    },
+    {
+      label: 'Telegram',
+      href: 'https://t.me/mansourov',
+    },
+    {
+      label: 'Linkedin',
+      href: 'https://www.linkedin.com/in/liildev',
+    }
+  ];
+
+  return (
+    <MuiAppBar
+      position="fixed"
+      sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 5 }}
+    >
+      <Container maxWidth="lg">
+        <StyledToolbar variant="dense" disableGutters>
+          <MuiLink component={Link} to={ROUTES.home}>
+            <AutoStories sx={{ color: '#000', height: 32, width: 32 }} />
+          </MuiLink>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, alignItems: 'center', ml: 3 }}>
+            {
+              links.map((item) => (
+                <Button
+                  key={item.href}
+                  href={item.href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  variant="text"
+                  color="info"
+                  size="small"
+                >
+                  {item.label}
+                </Button>
+              ))
+            }
+
+          </Box>
+
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+              gap: 1,
+              alignItems: 'center',
+            }}
+          >
+            <NavButtons />
+
+            <ToggleMode />
+          </Box>
+
+          <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+            <IconButton aria-label="Menu button" onClick={() => toggleDrawer()}>
+              <Menu />
+            </IconButton>
+
+            <Drawer anchor="top" open={isDrawer} onClose={toggleDrawer}>
+              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <IconButton onClick={() => toggleDrawer()}>
+                    <CloseRounded />
+                  </IconButton>
+
+                  <ToggleMode />
+                </Box>
+
+                <Divider sx={{ my: 3 }} />
+
+                {
+                  links.map((item) => (
+                    <MenuItem key={item.href}>
+                      <MuiLink
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        underline="none"
+                      >
+                        {item.label}
+                      </MuiLink>
+                    </MenuItem>
+                  ))
+                }
+                <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
+                  <NavButtons />
+                </Box>
+              </Box>
+            </Drawer>
+          </Box>
+        </StyledToolbar>
+      </Container>
+    </MuiAppBar>
+  )
+}
