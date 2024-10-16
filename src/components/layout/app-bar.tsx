@@ -1,6 +1,6 @@
+import { useAppStore } from '@/lib/store';
 import {
   AppBar as MuiAppBar,
-  Link as MuiLink,
   IconButton,
   Divider,
   MenuItem,
@@ -11,7 +11,6 @@ import { NavButtons } from './nav-buttons';
 import { ToggleMode } from './toggle-mode';
 import { AutoStories, CloseRounded, Menu } from '@mui/icons-material';
 import { ROUTES } from '@/constants';
-import { useAppStore } from '@/lib/store';
 
 export const AppBar = () => {
   const { isDrawer, toggleDrawer } = useAppStore()
@@ -38,9 +37,11 @@ export const AppBar = () => {
     >
       <Container maxWidth="lg">
         <StyledToolbar variant="dense" disableGutters>
-          <MuiLink component={Link} to={ROUTES.home}>
-            <AutoStories sx={{ color: '#000', height: 32, width: 32 }} />
-          </MuiLink>
+          <Link to={ROUTES.home}>
+            <IconButton sx={{ border: 'none' }}>
+              <AutoStories fontSize='medium' />
+            </IconButton>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, alignItems: 'center', ml: 3 }}>
             {
@@ -58,7 +59,6 @@ export const AppBar = () => {
                 </Button>
               ))
             }
-
           </Box>
 
           <Box
@@ -99,14 +99,13 @@ export const AppBar = () => {
                 {
                   links.map((item) => (
                     <MenuItem key={item.href}>
-                      <MuiLink
+                      <a
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        underline="none"
                       >
                         {item.label}
-                      </MuiLink>
+                      </a>
                     </MenuItem>
                   ))
                 }

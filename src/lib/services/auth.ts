@@ -1,4 +1,3 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
 import type { IUser, TSignUpFormValues } from '@/types/auth';
 import { api } from "./api";
 import { Endpoints } from "./endpoints";

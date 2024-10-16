@@ -16,6 +16,14 @@ export default defineConfig({
         "react",
         "react-router-dom",
         {
+          '@tanstack/react-query': [
+            'useQuery',
+            'useMutation',
+            'useIsMutating',
+            'useQueryClient'
+          ]
+        },
+        {
           '@mui/material': [
             'Box',
             'Button',
@@ -25,7 +33,6 @@ export default defineConfig({
             'Grid2',
             'Typography',
             'styled',
-            ['useFetch', 'useMyFetch'],
           ],
         },
       ],

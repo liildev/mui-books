@@ -29,16 +29,3 @@ export const storage = {
   removeItem: (key: string): void => localStorage.removeItem(key),
   clear: (): void => localStorage.clear(),
 };
-
-export const debounce = <T extends (...args: unknown[]) => unknown>(callback: T, delay: number) => {
-  let timeoutId: ReturnType<typeof setTimeout>;
-
-  return (...args: Parameters<T>): void => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      callback(...args);
-    }, delay);
-  };
-};

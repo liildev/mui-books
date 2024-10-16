@@ -11,15 +11,20 @@ export const Header = () => {
     []
   );
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    onSearch(value);
+  };
+
   return (
     <Title title="Books">
       <FormControl sx={{ width: { xs: '100%', sm: '40ch' } }} variant="outlined">
         <OutlinedInput
           size="small"
           id="search"
-          onChange={e => onSearch(e.target.value)}
+          onChange={handleInputChange}
           placeholder="Search…"
-          sx={{ flexGrow: 1 }}
           startAdornment={
             <InputAdornment position="start" sx={{ color: 'text.primary' }}>
               <SearchRounded fontSize="small" />

@@ -63,6 +63,7 @@ export const Login = () => {
           <Field
             label="Email"
             name="email"
+            type='email'
             placeholder="your@email.com"
             register={register}
             error={errors.email}
