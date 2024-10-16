@@ -33,6 +33,7 @@ export default defineConfig({
             'Grid2',
             'Typography',
             'styled',
+            ['Link', 'MuiLink']
           ],
         },
       ],

@@ -13,6 +13,7 @@ declare global {
   const Container: typeof import('@mui/material')['Container']
   const Grid2: typeof import('@mui/material')['Grid2']
   const Link: typeof import('react-router-dom')['Link']
+  const MuiLink: typeof import('@mui/material')['Link']
   const NavLink: typeof import('react-router-dom')['NavLink']
   const Navigate: typeof import('react-router-dom')['Navigate']
   const Outlet: typeof import('react-router-dom')['Outlet']

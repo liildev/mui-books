@@ -3,10 +3,11 @@ import {
   AppBar as MuiAppBar,
   IconButton,
   Divider,
-  MenuItem,
-  Drawer
+  Drawer,
+  List,
+  MenuItem
 } from '@mui/material';
-import { StyledToolbar } from './style';
+import { StyledToolbar } from '../style';
 import { NavButtons } from './nav-buttons';
 import { ToggleMode } from './toggle-mode';
 import { AutoStories, CloseRounded, Menu } from '@mui/icons-material';
@@ -94,21 +95,24 @@ export const AppBar = () => {
                   <ToggleMode />
                 </Box>
 
-                <Divider sx={{ my: 3 }} />
+                <Divider sx={{ mt: 3 }} />
 
-                {
-                  links.map((item) => (
-                    <MenuItem key={item.href}>
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.label}
-                      </a>
-                    </MenuItem>
-                  ))
-                }
+                <List>
+                  {
+                    links.map((item) => (
+                      <MenuItem key={item.href}>
+                        <MuiLink
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.label}
+                        </MuiLink>
+                      </MenuItem>
+                    ))
+                  }
+                </List>
+
                 <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
                   <NavButtons />
                 </Box>
