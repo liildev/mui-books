@@ -18,11 +18,11 @@ const useAuth = create<IAuthStore>()((set) => ({
     set(() => {
       storage.removeItem(KEYS.user);
       storage.removeItem(KEYS.headers);
+      storage.removeItem(KEYS.list);
 
       return {
         user: null,
         headers: null,
-        isAuthenticated: false,
       };
     }),
 }));

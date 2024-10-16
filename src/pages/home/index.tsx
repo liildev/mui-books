@@ -7,7 +7,7 @@ import { Loader, Book, Btn } from '@/components';
 
 export const Home = () => {
   const { search, addedBooks, toggleBook } = useAppStore();
-  const { data, isLoading } = useSearchBooksQuery(search);
+  const { data, isLoading, error } = useSearchBooksQuery(search);
   const { mutate, isPending } = useAddBookQuery(onSuccess);
   const [loadingIsbn, setLoadingIsbn] = useState<string | null>(null);
 
@@ -56,7 +56,7 @@ export const Home = () => {
         </Grid2>
       ) : (
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h5">No results found</Typography>
+          <Typography variant="h5">{error?.message || 'No results found'}</Typography>
           <Typography variant="body2">We couldn't find any books matching your search. Please try a different query</Typography>
         </Box>
       )}
