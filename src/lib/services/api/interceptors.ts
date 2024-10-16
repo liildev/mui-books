@@ -31,7 +31,7 @@ export const successInterceptor = (response: AxiosResponse): Promise<AxiosRespon
 
 export const errorInterceptor = (error: AxiosError): Promise<never> => {
   if (error.response?.status === 401) {
-    // useAuthStore.getState().logout();
+    useAuthStore.getState().logout();
   }
 
   return Promise.reject(error?.response?.data);
