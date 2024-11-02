@@ -8,7 +8,7 @@ import { Loader, Book, Btn } from '@/components';
 
 export const Home = () => {
   const { search, addedBooks, toggleBook } = useAppStore();
-  const { data, isLoading, error } = useSearchBooksQuery('');
+  const { data, isLoading, error } = useSearchBooksQuery(search);
   const { mutate, isPending } = useAddBookQuery(onSuccess);
   const [loadingIsbn, setLoadingIsbn] = useState<string | null>(null);
 
