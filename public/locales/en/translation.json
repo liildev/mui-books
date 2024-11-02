@@ -1,0 +1,30 @@
+{
+  "home": {
+    "welcome": "Welcome to",
+    "visit": "Visit",
+    "watch": "Watch video tour",
+    "allTours": "All tours",
+    "comfort": ["Everything", "for your", "comfort"],
+    "getApp": [
+      "Get our",
+      "application",
+      " Make your trip easier with our application. Where you can manage transfers, luggage delivery and sim card plans"
+    ],
+    "cards": [
+      "Get your first",
+      "Sim Card",
+      "Order Transfer",
+      "Luggage Delivery",
+      "See plans",
+      "Book a trip",
+      "Build a route"
+    ]
+  },
+  "navigation": ["Excursion", "Hotels"],
+  "footer": [
+    "All right reserved",
+    "License number",
+    "Download our application",
+    "Follow us on social networks"
+  ]
+}
